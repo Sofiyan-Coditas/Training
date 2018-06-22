@@ -1,0 +1,45 @@
+<h1 class="text-center" *ngIf="!userList">Type to Search!</h1>
+
+<div class="container topPadding" *ngIf="userList">
+  <p class="text-center">Total Number of Users : {{ userList.length }}</p>
+  <div class="offset-sm-1 col-md-10 margin-b" *ngFor="let user of userList | sortPipe: query | paginate: { itemsPerPage: 5, currentPage: p}">
+    <div class="row card">
+      <div class="col-md-3">
+        <img [src]="user.avatar_url" class="img-responsive img-circle" width="150" height="150">
+      </div>
+      <div class="col-md-9">
+        <h1 id="login">{{user.login}}</h1>
+        <h4><strong>Project URL</strong> - {{user.html_url}}</h4>
+        <div class="row">
+          <div class="col-md-6">
+            <p><strong>ID</strong> - {{user.id}}</p>
+            <p><strong>Score</strong> - {{user.score}}</p>
+          </div>
+          <div class="col-md-6">
+            <button id="details" [attr.data-target]="'#' + user.login" [id]="user.login+'_details'" 
+              class="btn outline-btn margin-b" (click)="userDetails(user.login)">Details</button>
+            <button [attr.data-target]="'#' + user.login" [id]="user.login+'_collapse'" 
+              class="btn outline-btn d-none margin-b" (click)="hideDetails(user.login)">Collapse</button>
+          </div>
+        </div>
+      </div>
+      <div class="details" [attr.id]="user.login" *ngIf="userRepo && username == user.login">
+        <table class="detail_table">
+          <tr *ngFor="let user of userRepo">
+            <td>{{user.name}}</td>
+            <td>{{user.full_name}}</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="text-center">
+    <pagination-controls (pageChange)="p = $event" previousLabel="Previous"
+      directionLinks="true"
+      autoHide="true"
+      nextLabel="Next"
+      screenReaderPaginationLabel="Pagination"
+      screenReaderPageLabel="page"
+      screenReaderCurrentLabel="You're on page"></pagination-controls>
+  </div>
+</div>
