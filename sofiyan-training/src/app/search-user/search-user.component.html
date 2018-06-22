@@ -1,0 +1,40 @@
+<div class="header">
+  <form #searchForm = "ngForm">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="col-sm-6 float-right">
+            <select id="sorter" name="sorter" class="form-control" (input)="sort($event.target.value)">
+              <option value="az">Sort by Name (A - Z)</option>
+              <option value="za">Sort by Name (Z - A)</option>
+              <option value="rankAsc">Ranking Ascending</option>
+              <option value="rankDesc">Ranking Descending</option>
+            </select>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="col-sm-6">
+            <div class="input-group">
+              <input type="text" ngModel name="search" placeholder="Search User" id="search" 
+                class="form-control" (input)="searchUser($event.target.value)">
+              <div class="input-group-append">
+                <a href="#" class="btn btn-outline-secondary btn-light">
+                  <span class="fa fa-search"></span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+
+<div class="content">
+  <div class="container">
+    <app-user-list></app-user-list>
+  </div>
+</div>
+<footer class="footer text-center">
+  <span class="">&copy; Sofiyan</span>
+</footer>

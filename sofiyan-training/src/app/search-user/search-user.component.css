@@ -1,0 +1,24 @@
+.header{
+    background-color: #135e82;
+    padding: 20px 0px;
+}
+
+.btn-light{
+    background-color: #fff;
+    border-color: #fff;
+    border-left-color: #ccc
+}
+
+.content{
+    padding-bottom: 60px;
+    min-height: 498px;
+}
+
+.footer{
+    border-top: 1px solid #ccc;
+    padding: 20px;
+    bottom: 0;
+    /*position: absolute;*/
+    width: 100%;
+    height: 60px;
+}
